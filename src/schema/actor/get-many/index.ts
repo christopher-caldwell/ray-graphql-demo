@@ -1,10 +1,7 @@
 import { builder } from '@/schema/builder'
-import { readSqlFile } from '@/utils'
-
 import { actor } from '../schema'
 import { getManyActors } from './queries'
 
-const query = readSqlFile(__dirname, 'query.sql')
 builder.queryField('actors', (t) =>
   t.field({
     type: [actor],

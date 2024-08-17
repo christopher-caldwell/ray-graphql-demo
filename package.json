@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit",
     "db:up": "docker compose up",
     "db:down": "docker compose down",
     "db:generate:types": ". .env && pg-to-ts generate -c postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST/$POSTGRES_DB -o src/types/schema.ts",
@@ -10,18 +13,21 @@
     "start:dev": "tsx watch src/index.ts"
   },
   "devDependencies": {
+    "@eslint/js": "^9.9.0",
     "@pgtyped/cli": "^2.3.0",
+    "@types/eslint__js": "^8.42.3",
     "@types/express": "^4.17.21",
+    "@types/node": "^22.4.0",
     "@types/pg": "^8.11.6",
     "@typescript-eslint/eslint-plugin": "^8.1.0",
     "@typescript-eslint/parser": "^8.1.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
+    "eslint": "^9.9.0",
     "pg-to-ts": "^4.1.1",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
     "tsx": "^4.17.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.1.0"
   },
   "dependencies": {
     "@caldwell619/data-loader": "0.0.9-alpha.0",
@@ -32,7 +38,6 @@
     "graphql": "^16.9.0",
     "graphql-scalars": "^1.23.0",
     "graphql-yoga": "^5.7.0",
-    "pg": "^8.12.0",
-    "short-uuid": "^5.2.0"
+    "pg": "^8.12.0"
   }
 }

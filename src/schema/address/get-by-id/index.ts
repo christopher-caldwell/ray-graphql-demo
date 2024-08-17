@@ -1,10 +1,7 @@
 import { builder } from '@/schema/builder'
 import { address } from '../schema'
-import { Address } from '@/types/schema'
-import { readSqlFile } from '@/utils'
 import { getAddressById } from './queries'
 
-const query = readSqlFile(__dirname, 'query.sql')
 builder.queryField('address', (t) =>
   t.field({
     type: address,

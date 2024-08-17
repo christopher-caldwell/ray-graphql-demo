@@ -3,6 +3,7 @@
     "strict": true,
     "baseUrl": "src",
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "paths": {
       "@/*": ["./*"]
     }

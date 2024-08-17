@@ -1,9 +1,7 @@
 import { builder } from '@/schema/builder'
 import { staff } from '../schema'
-import { Staff } from '@/types/schema'
-import { readSqlFile } from '@/utils'
+import { getStaffMemberById } from './queries'
 
-const query = readSqlFile(__dirname, 'query.sql')
 builder.queryField('staffMember', (t) =>
   t.field({
     type: staff,
@@ -12,15 +10,14 @@ builder.queryField('staffMember', (t) =>
     },
     nullable: true,
     async resolve(_, { staffId }, { dbClient }) {
-      const staff = await dbClient.query<Staff>(query, [staffId])
-
-      if (!staff.rows.length) {
+      const result = await getStaffMemberById.run({ staffId }, dbClient)
+      if (!result.length) {
         return null
       }
-      if (staff.rows.length > 1) {
-        throw new Error('Expected only one staff')
+      if (result.length > 1) {
+        throw new Error('Expected only one')
       }
-      return staff.rows[0]
+      return result[0]
     },
   }),
 )
