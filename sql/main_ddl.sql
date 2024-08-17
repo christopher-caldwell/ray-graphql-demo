@@ -310,7 +310,7 @@ SELECT
     ((cu.first_name)::text || ' '::text) || (cu.last_name)::text
   ) AS name,
   a.address,
-  a.postal_code AS "zip code",
+  a.postal_code AS "zip code", -- Shouldn't this be zip_code?
   a.phone,
   city.city,
   country.country,
@@ -746,7 +746,7 @@ SELECT
     ((s.first_name)::text || ' '::text) || (s.last_name)::text
   ) AS name,
   a.address,
-  a.postal_code AS "zip code",
+  a.postal_code AS "zip code", -- Shouldn't this be zip_code?
   a.phone,
   city.city,
   country.country,

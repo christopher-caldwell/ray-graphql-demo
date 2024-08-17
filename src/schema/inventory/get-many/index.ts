@@ -1,10 +1,10 @@
-import { builder } from '@/schema/builder'
-import { inventory } from '../schema'
-import { Inventory } from '@/types/schema'
-import { readSqlFile } from '@/utils'
+import { builder } from "@/schema/builder";
+import { inventory } from "../schema";
+import { Inventory } from "@/types/schema";
+import { readSqlFile } from "@/utils";
 
-const query = readSqlFile(__dirname, 'query.sql')
-builder.queryField('inventories', (t) =>
+const query = readSqlFile(__dirname, "query.sql");
+builder.queryField("inventories", (t) =>
   t.field({
     type: [inventory],
     args: {
@@ -12,9 +12,9 @@ builder.queryField('inventories', (t) =>
       offset: t.arg.int({ required: false }),
     },
     async resolve(_, { limit, offset }, { dbClient }) {
-      const actors = await dbClient.query<Inventory>(query, [limit, offset])
-      dbClient.release()
-      return actors.rows
+      const actors = await dbClient.query<Inventory>(query, [limit, offset]);
+
+      return actors.rows;
     },
   }),
-)
+);

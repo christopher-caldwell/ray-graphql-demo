@@ -1,10 +1,10 @@
-import { builder } from '@/schema/builder'
-import { address } from '../schema'
-import { Address } from '@/types/schema'
-import { readSqlFile } from '@/utils'
+import { builder } from "@/schema/builder";
+import { address } from "../schema";
+import { Address } from "@/types/schema";
+import { readSqlFile } from "@/utils";
 
-const query = readSqlFile(__dirname, 'query.sql')
-builder.queryField('addresses', (t) =>
+const query = readSqlFile(__dirname, "query.sql");
+builder.queryField("addresses", (t) =>
   t.field({
     type: [address],
     args: {
@@ -12,9 +12,9 @@ builder.queryField('addresses', (t) =>
       offset: t.arg.int({ required: false }),
     },
     async resolve(_, { limit, offset }, { dbClient }) {
-      const actors = await dbClient.query<Address>(query, [limit, offset])
-      dbClient.release()
-      return actors.rows
+      const actors = await dbClient.query<Address>(query, [limit, offset]);
+
+      return actors.rows;
     },
   }),
-)
+);

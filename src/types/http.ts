@@ -1,6 +1,6 @@
-import { PoolClient } from 'pg'
+import { PoolClient } from "pg";
 
 export type ResolverContext = {
-  dbClient: PoolClient
-  connectionId: string
-}
+  dbClient: PoolClient;
+  connectionId: string;
+};

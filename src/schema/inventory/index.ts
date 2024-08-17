@@ -1,3 +1,3 @@
-import './get-many'
+import "./get-many";
 
-export * from './schema'
+export * from "./schema";
