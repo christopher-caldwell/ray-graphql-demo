@@ -1,5 +1,8 @@
 # GraphQL Demo with the Sakila Data Set
 
+## Tasks
+- [ ] DB migration & reaction in codebase
+
 ## Time Tracked
 
 - 1hr
