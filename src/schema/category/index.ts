@@ -1,5 +1,5 @@
 import './get-many'
-import './get-one'
+import './get-by-id'
 
 export * from './schema'
 // export * from './loader'

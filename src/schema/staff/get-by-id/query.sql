@@ -1,0 +1,1 @@
+SELECT * FROM STAFF WHERE staff_id = $1;
