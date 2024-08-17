@@ -1,2 +1,2 @@
 /* @name getAddressById */
-SELECT * FROM address WHERE address_id = :address_id;
+SELECT * FROM address WHERE address_id = :addressId;

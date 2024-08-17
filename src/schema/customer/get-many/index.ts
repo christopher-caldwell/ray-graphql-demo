@@ -1,10 +1,8 @@
-import { builder } from "@/schema/builder";
-import { customer } from "../schema";
-import { Customer } from "@/types/schema";
-import { readSqlFile } from "@/utils";
+import { builder } from '@/schema/builder'
+import { customer } from '../schema'
+import { getManyCustomers } from './queries'
 
-const query = readSqlFile(__dirname, "query.sql");
-builder.queryField("customers", (t) =>
+builder.queryField('customers', (t) =>
   t.field({
     type: [customer],
     args: {
@@ -12,9 +10,8 @@ builder.queryField("customers", (t) =>
       offset: t.arg.int({ required: false }),
     },
     async resolve(_, { limit, offset }, { dbClient }) {
-      const actors = await dbClient.query<Customer>(query, [limit, offset]);
-
-      return actors.rows;
+      const result = await getManyCustomers.run({ limit, offset }, dbClient)
+      return result
     },
   }),
-);
+)

@@ -6,6 +6,14 @@
 - 25m
 - 9:46am -
 
+## Thoughts
+
+- PGTyped found a bug I created by not knowing what an mpaa_rating is.
+- Temporarily have to override numeric generations to be numbers. Looking for a fix, maybe patch package
+- Temporarily have to override bytea generations to be strings. Looking for a fix, maybe patch package
+
+## Test Queries
+
 ```graphql
 query Test {
   actors {

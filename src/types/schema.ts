@@ -9,1278 +9,1127 @@
  *
  */
 
-export type Json = unknown;
-export type mpaa_rating = "G" | "NC-17" | "PG" | "PG-13" | "R";
+export type Json = unknown
+export type mpaa_rating = 'G' | 'NC-17' | 'PG' | 'PG-13' | 'R'
 
 // Table actor
 export interface Actor {
-  actor_id: number;
-  first_name: string;
-  last_name: string;
-  last_update: Date;
+  actor_id: number
+  first_name: string
+  last_name: string
+  last_update: Date
 }
 export interface ActorInput {
-  actor_id?: number;
-  first_name: string;
-  last_name: string;
-  last_update?: Date;
+  actor_id?: number
+  first_name: string
+  last_name: string
+  last_update?: Date
 }
 const actor = {
-  tableName: "actor",
-  columns: ["actor_id", "first_name", "last_name", "last_update"],
-  requiredForInsert: ["first_name", "last_name"],
-  primaryKey: "actor_id",
+  tableName: 'actor',
+  columns: ['actor_id', 'first_name', 'last_name', 'last_update'],
+  requiredForInsert: ['first_name', 'last_name'],
+  primaryKey: 'actor_id',
   foreignKeys: {},
   $type: null as unknown as Actor,
   $input: null as unknown as ActorInput,
-} as const;
+} as const
 
 // Table actor_info
 export interface ActorInfo {
-  actor_id: number | null;
-  first_name: string | null;
-  last_name: string | null;
-  film_info: string | null;
+  actor_id: number | null
+  first_name: string | null
+  last_name: string | null
+  film_info: string | null
 }
 export interface ActorInfoInput {
-  actor_id?: number | null;
-  first_name?: string | null;
-  last_name?: string | null;
-  film_info?: string | null;
+  actor_id?: number | null
+  first_name?: string | null
+  last_name?: string | null
+  film_info?: string | null
 }
 const actor_info = {
-  tableName: "actor_info",
-  columns: ["actor_id", "first_name", "last_name", "film_info"],
+  tableName: 'actor_info',
+  columns: ['actor_id', 'first_name', 'last_name', 'film_info'],
   requiredForInsert: [],
   primaryKey: null,
   foreignKeys: {},
   $type: null as unknown as ActorInfo,
   $input: null as unknown as ActorInfoInput,
-} as const;
+} as const
 
 // Table address
 export interface Address {
-  address_id: number;
-  address: string;
-  address2: string | null;
-  district: string;
-  city_id: number;
-  postal_code: string | null;
-  phone: string;
-  last_update: Date;
+  address_id: number
+  address: string
+  address2: string | null
+  district: string
+  city_id: number
+  postal_code: string | null
+  phone: string
+  last_update: Date
 }
 export interface AddressInput {
-  address_id?: number;
-  address: string;
-  address2?: string | null;
-  district: string;
-  city_id: number;
-  postal_code?: string | null;
-  phone: string;
-  last_update?: Date;
+  address_id?: number
+  address: string
+  address2?: string | null
+  district: string
+  city_id: number
+  postal_code?: string | null
+  phone: string
+  last_update?: Date
 }
 const address = {
-  tableName: "address",
-  columns: [
-    "address_id",
-    "address",
-    "address2",
-    "district",
-    "city_id",
-    "postal_code",
-    "phone",
-    "last_update",
-  ],
-  requiredForInsert: ["address", "district", "city_id", "phone"],
-  primaryKey: "address_id",
+  tableName: 'address',
+  columns: ['address_id', 'address', 'address2', 'district', 'city_id', 'postal_code', 'phone', 'last_update'],
+  requiredForInsert: ['address', 'district', 'city_id', 'phone'],
+  primaryKey: 'address_id',
   foreignKeys: {
     city_id: {
-      table: "city",
-      column: "city_id",
+      table: 'city',
+      column: 'city_id',
       $type: null as unknown as City,
     },
   },
   $type: null as unknown as Address,
   $input: null as unknown as AddressInput,
-} as const;
+} as const
 
 // Table category
 export interface Category {
-  category_id: number;
-  name: string;
-  last_update: Date;
+  category_id: number
+  name: string
+  last_update: Date
 }
 export interface CategoryInput {
-  category_id?: number;
-  name: string;
-  last_update?: Date;
+  category_id?: number
+  name: string
+  last_update?: Date
 }
 const category = {
-  tableName: "category",
-  columns: ["category_id", "name", "last_update"],
-  requiredForInsert: ["name"],
-  primaryKey: "category_id",
+  tableName: 'category',
+  columns: ['category_id', 'name', 'last_update'],
+  requiredForInsert: ['name'],
+  primaryKey: 'category_id',
   foreignKeys: {},
   $type: null as unknown as Category,
   $input: null as unknown as CategoryInput,
-} as const;
+} as const
 
 // Table city
 export interface City {
-  city_id: number;
-  city: string;
-  country_id: number;
-  last_update: Date;
+  city_id: number
+  city: string
+  country_id: number
+  last_update: Date
 }
 export interface CityInput {
-  city_id?: number;
-  city: string;
-  country_id: number;
-  last_update?: Date;
+  city_id?: number
+  city: string
+  country_id: number
+  last_update?: Date
 }
 const city = {
-  tableName: "city",
-  columns: ["city_id", "city", "country_id", "last_update"],
-  requiredForInsert: ["city", "country_id"],
-  primaryKey: "city_id",
+  tableName: 'city',
+  columns: ['city_id', 'city', 'country_id', 'last_update'],
+  requiredForInsert: ['city', 'country_id'],
+  primaryKey: 'city_id',
   foreignKeys: {
     country_id: {
-      table: "country",
-      column: "country_id",
+      table: 'country',
+      column: 'country_id',
       $type: null as unknown as Country,
     },
   },
   $type: null as unknown as City,
   $input: null as unknown as CityInput,
-} as const;
+} as const
 
 // Table country
 export interface Country {
-  country_id: number;
-  country: string;
-  last_update: Date;
+  country_id: number
+  country: string
+  last_update: Date
 }
 export interface CountryInput {
-  country_id?: number;
-  country: string;
-  last_update?: Date;
+  country_id?: number
+  country: string
+  last_update?: Date
 }
 const country = {
-  tableName: "country",
-  columns: ["country_id", "country", "last_update"],
-  requiredForInsert: ["country"],
-  primaryKey: "country_id",
+  tableName: 'country',
+  columns: ['country_id', 'country', 'last_update'],
+  requiredForInsert: ['country'],
+  primaryKey: 'country_id',
   foreignKeys: {},
   $type: null as unknown as Country,
   $input: null as unknown as CountryInput,
-} as const;
+} as const
 
 // Table customer
 export interface Customer {
-  customer_id: number;
-  store_id: number;
-  first_name: string;
-  last_name: string;
-  email: string | null;
-  address_id: number;
-  activebool: boolean;
-  create_date: Date;
-  last_update: Date | null;
-  active: number | null;
+  customer_id: number
+  store_id: number
+  first_name: string
+  last_name: string
+  email: string | null
+  address_id: number
+  activebool: boolean
+  create_date: Date
+  last_update: Date | null
+  active: number | null
 }
 export interface CustomerInput {
-  customer_id?: number;
-  store_id: number;
-  first_name: string;
-  last_name: string;
-  email?: string | null;
-  address_id: number;
-  activebool?: boolean;
-  create_date?: Date;
-  last_update?: Date | null;
-  active?: number | null;
+  customer_id?: number
+  store_id: number
+  first_name: string
+  last_name: string
+  email?: string | null
+  address_id: number
+  activebool?: boolean
+  create_date?: Date
+  last_update?: Date | null
+  active?: number | null
 }
 const customer = {
-  tableName: "customer",
+  tableName: 'customer',
   columns: [
-    "customer_id",
-    "store_id",
-    "first_name",
-    "last_name",
-    "email",
-    "address_id",
-    "activebool",
-    "create_date",
-    "last_update",
-    "active",
+    'customer_id',
+    'store_id',
+    'first_name',
+    'last_name',
+    'email',
+    'address_id',
+    'activebool',
+    'create_date',
+    'last_update',
+    'active',
   ],
-  requiredForInsert: ["store_id", "first_name", "last_name", "address_id"],
-  primaryKey: "customer_id",
+  requiredForInsert: ['store_id', 'first_name', 'last_name', 'address_id'],
+  primaryKey: 'customer_id',
   foreignKeys: {
     store_id: {
-      table: "store",
-      column: "store_id",
+      table: 'store',
+      column: 'store_id',
       $type: null as unknown as Store,
     },
     address_id: {
-      table: "address",
-      column: "address_id",
+      table: 'address',
+      column: 'address_id',
       $type: null as unknown as Address,
     },
   },
   $type: null as unknown as Customer,
   $input: null as unknown as CustomerInput,
-} as const;
+} as const
 
 // Table customer_list
 export interface CustomerList {
-  id: number | null;
-  name: string | null;
-  address: string | null;
-  "zip code": string | null;
-  phone: string | null;
-  city: string | null;
-  country: string | null;
-  notes: string | null;
-  sid: number | null;
+  id: number | null
+  name: string | null
+  address: string | null
+  'zip code': string | null
+  phone: string | null
+  city: string | null
+  country: string | null
+  notes: string | null
+  sid: number | null
 }
 export interface CustomerListInput {
-  id?: number | null;
-  name?: string | null;
-  address?: string | null;
-  "zip code"?: string | null;
-  phone?: string | null;
-  city?: string | null;
-  country?: string | null;
-  notes?: string | null;
-  sid?: number | null;
+  id?: number | null
+  name?: string | null
+  address?: string | null
+  'zip code'?: string | null
+  phone?: string | null
+  city?: string | null
+  country?: string | null
+  notes?: string | null
+  sid?: number | null
 }
 const customer_list = {
-  tableName: "customer_list",
-  columns: [
-    "id",
-    "name",
-    "address",
-    "zip code",
-    "phone",
-    "city",
-    "country",
-    "notes",
-    "sid",
-  ],
+  tableName: 'customer_list',
+  columns: ['id', 'name', 'address', 'zip code', 'phone', 'city', 'country', 'notes', 'sid'],
   requiredForInsert: [],
   primaryKey: null,
   foreignKeys: {},
   $type: null as unknown as CustomerList,
   $input: null as unknown as CustomerListInput,
-} as const;
+} as const
 
 // Table film
 export interface Film {
-  film_id: number;
-  title: string;
-  description: string | null;
-  release_year: number | null;
-  language_id: number;
-  original_language_id: number | null;
-  rental_duration: number;
-  rental_rate: number;
-  length: number | null;
-  replacement_cost: number;
-  rating: mpaa_rating | null;
-  last_update: Date;
-  special_features: string[] | null;
-  fulltext: any;
+  film_id: number
+  title: string
+  description: string | null
+  release_year: number | null
+  language_id: number
+  original_language_id: number | null
+  rental_duration: number
+  rental_rate: number
+  length: number | null
+  replacement_cost: number
+  rating: mpaa_rating | null
+  last_update: Date
+  special_features: string[] | null
+  fulltext: any
 }
 export interface FilmInput {
-  film_id?: number;
-  title: string;
-  description?: string | null;
-  release_year?: number | null;
-  language_id: number;
-  original_language_id?: number | null;
-  rental_duration?: number;
-  rental_rate?: number;
-  length?: number | null;
-  replacement_cost?: number;
-  rating?: mpaa_rating | null;
-  last_update?: Date;
-  special_features?: string[] | null;
-  fulltext: any;
+  film_id?: number
+  title: string
+  description?: string | null
+  release_year?: number | null
+  language_id: number
+  original_language_id?: number | null
+  rental_duration?: number
+  rental_rate?: number
+  length?: number | null
+  replacement_cost?: number
+  rating?: mpaa_rating | null
+  last_update?: Date
+  special_features?: string[] | null
+  fulltext: any
 }
 const film = {
-  tableName: "film",
+  tableName: 'film',
   columns: [
-    "film_id",
-    "title",
-    "description",
-    "release_year",
-    "language_id",
-    "original_language_id",
-    "rental_duration",
-    "rental_rate",
-    "length",
-    "replacement_cost",
-    "rating",
-    "last_update",
-    "special_features",
-    "fulltext",
+    'film_id',
+    'title',
+    'description',
+    'release_year',
+    'language_id',
+    'original_language_id',
+    'rental_duration',
+    'rental_rate',
+    'length',
+    'replacement_cost',
+    'rating',
+    'last_update',
+    'special_features',
+    'fulltext',
   ],
-  requiredForInsert: ["title", "language_id", "fulltext"],
-  primaryKey: "film_id",
+  requiredForInsert: ['title', 'language_id', 'fulltext'],
+  primaryKey: 'film_id',
   foreignKeys: {
     language_id: {
-      table: "language",
-      column: "language_id",
+      table: 'language',
+      column: 'language_id',
       $type: null as unknown as Language,
     },
     original_language_id: {
-      table: "language",
-      column: "language_id",
+      table: 'language',
+      column: 'language_id',
       $type: null as unknown as Language,
     },
   },
   $type: null as unknown as Film,
   $input: null as unknown as FilmInput,
-} as const;
+} as const
 
 // Table film_actor
 export interface FilmActor {
-  actor_id: number;
-  film_id: number;
-  last_update: Date;
+  actor_id: number
+  film_id: number
+  last_update: Date
 }
 export interface FilmActorInput {
-  actor_id: number;
-  film_id: number;
-  last_update?: Date;
+  actor_id: number
+  film_id: number
+  last_update?: Date
 }
 const film_actor = {
-  tableName: "film_actor",
-  columns: ["actor_id", "film_id", "last_update"],
-  requiredForInsert: ["actor_id", "film_id"],
-  primaryKey: "actor_id",
+  tableName: 'film_actor',
+  columns: ['actor_id', 'film_id', 'last_update'],
+  requiredForInsert: ['actor_id', 'film_id'],
+  primaryKey: 'actor_id',
   foreignKeys: {
     actor_id: {
-      table: "actor",
-      column: "actor_id",
+      table: 'actor',
+      column: 'actor_id',
       $type: null as unknown as Actor,
     },
     film_id: {
-      table: "film",
-      column: "film_id",
+      table: 'film',
+      column: 'film_id',
       $type: null as unknown as Film,
     },
   },
   $type: null as unknown as FilmActor,
   $input: null as unknown as FilmActorInput,
-} as const;
+} as const
 
 // Table film_category
 export interface FilmCategory {
-  film_id: number;
-  category_id: number;
-  last_update: Date;
+  film_id: number
+  category_id: number
+  last_update: Date
 }
 export interface FilmCategoryInput {
-  film_id: number;
-  category_id: number;
-  last_update?: Date;
+  film_id: number
+  category_id: number
+  last_update?: Date
 }
 const film_category = {
-  tableName: "film_category",
-  columns: ["film_id", "category_id", "last_update"],
-  requiredForInsert: ["film_id", "category_id"],
-  primaryKey: "film_id",
+  tableName: 'film_category',
+  columns: ['film_id', 'category_id', 'last_update'],
+  requiredForInsert: ['film_id', 'category_id'],
+  primaryKey: 'film_id',
   foreignKeys: {
     film_id: {
-      table: "film",
-      column: "film_id",
+      table: 'film',
+      column: 'film_id',
       $type: null as unknown as Film,
     },
     category_id: {
-      table: "category",
-      column: "category_id",
+      table: 'category',
+      column: 'category_id',
       $type: null as unknown as Category,
     },
   },
   $type: null as unknown as FilmCategory,
   $input: null as unknown as FilmCategoryInput,
-} as const;
+} as const
 
 // Table film_list
 export interface FilmList {
-  fid: number | null;
-  title: string | null;
-  description: string | null;
-  category: string | null;
-  price: number | null;
-  length: number | null;
-  rating: mpaa_rating | null;
-  actors: string | null;
+  fid: number | null
+  title: string | null
+  description: string | null
+  category: string | null
+  price: number | null
+  length: number | null
+  rating: mpaa_rating | null
+  actors: string | null
 }
 export interface FilmListInput {
-  fid?: number | null;
-  title?: string | null;
-  description?: string | null;
-  category?: string | null;
-  price?: number | null;
-  length?: number | null;
-  rating?: mpaa_rating | null;
-  actors?: string | null;
+  fid?: number | null
+  title?: string | null
+  description?: string | null
+  category?: string | null
+  price?: number | null
+  length?: number | null
+  rating?: mpaa_rating | null
+  actors?: string | null
 }
 const film_list = {
-  tableName: "film_list",
-  columns: [
-    "fid",
-    "title",
-    "description",
-    "category",
-    "price",
-    "length",
-    "rating",
-    "actors",
-  ],
+  tableName: 'film_list',
+  columns: ['fid', 'title', 'description', 'category', 'price', 'length', 'rating', 'actors'],
   requiredForInsert: [],
   primaryKey: null,
   foreignKeys: {},
   $type: null as unknown as FilmList,
   $input: null as unknown as FilmListInput,
-} as const;
+} as const
 
 // Table inventory
 export interface Inventory {
-  inventory_id: number;
-  film_id: number;
-  store_id: number;
-  last_update: Date;
+  inventory_id: number
+  film_id: number
+  store_id: number
+  last_update: Date
 }
 export interface InventoryInput {
-  inventory_id?: number;
-  film_id: number;
-  store_id: number;
-  last_update?: Date;
+  inventory_id?: number
+  film_id: number
+  store_id: number
+  last_update?: Date
 }
 const inventory = {
-  tableName: "inventory",
-  columns: ["inventory_id", "film_id", "store_id", "last_update"],
-  requiredForInsert: ["film_id", "store_id"],
-  primaryKey: "inventory_id",
+  tableName: 'inventory',
+  columns: ['inventory_id', 'film_id', 'store_id', 'last_update'],
+  requiredForInsert: ['film_id', 'store_id'],
+  primaryKey: 'inventory_id',
   foreignKeys: {
     film_id: {
-      table: "film",
-      column: "film_id",
+      table: 'film',
+      column: 'film_id',
       $type: null as unknown as Film,
     },
     store_id: {
-      table: "store",
-      column: "store_id",
+      table: 'store',
+      column: 'store_id',
       $type: null as unknown as Store,
     },
   },
   $type: null as unknown as Inventory,
   $input: null as unknown as InventoryInput,
-} as const;
+} as const
 
 // Table language
 export interface Language {
-  language_id: number;
-  name: string;
-  last_update: Date;
+  language_id: number
+  name: string
+  last_update: Date
 }
 export interface LanguageInput {
-  language_id?: number;
-  name: string;
-  last_update?: Date;
+  language_id?: number
+  name: string
+  last_update?: Date
 }
 const language = {
-  tableName: "language",
-  columns: ["language_id", "name", "last_update"],
-  requiredForInsert: ["name"],
-  primaryKey: "language_id",
+  tableName: 'language',
+  columns: ['language_id', 'name', 'last_update'],
+  requiredForInsert: ['name'],
+  primaryKey: 'language_id',
   foreignKeys: {},
   $type: null as unknown as Language,
   $input: null as unknown as LanguageInput,
-} as const;
+} as const
 
 // Table nicer_but_slower_film_list
 export interface NicerButSlowerFilmList {
-  fid: number | null;
-  title: string | null;
-  description: string | null;
-  category: string | null;
-  price: number | null;
-  length: number | null;
-  rating: mpaa_rating | null;
-  actors: string | null;
+  fid: number | null
+  title: string | null
+  description: string | null
+  category: string | null
+  price: number | null
+  length: number | null
+  rating: mpaa_rating | null
+  actors: string | null
 }
 export interface NicerButSlowerFilmListInput {
-  fid?: number | null;
-  title?: string | null;
-  description?: string | null;
-  category?: string | null;
-  price?: number | null;
-  length?: number | null;
-  rating?: mpaa_rating | null;
-  actors?: string | null;
+  fid?: number | null
+  title?: string | null
+  description?: string | null
+  category?: string | null
+  price?: number | null
+  length?: number | null
+  rating?: mpaa_rating | null
+  actors?: string | null
 }
 const nicer_but_slower_film_list = {
-  tableName: "nicer_but_slower_film_list",
-  columns: [
-    "fid",
-    "title",
-    "description",
-    "category",
-    "price",
-    "length",
-    "rating",
-    "actors",
-  ],
+  tableName: 'nicer_but_slower_film_list',
+  columns: ['fid', 'title', 'description', 'category', 'price', 'length', 'rating', 'actors'],
   requiredForInsert: [],
   primaryKey: null,
   foreignKeys: {},
   $type: null as unknown as NicerButSlowerFilmList,
   $input: null as unknown as NicerButSlowerFilmListInput,
-} as const;
+} as const
 
 // Table payment
 export interface Payment {
-  payment_id: number;
-  customer_id: number;
-  staff_id: number;
-  rental_id: number;
-  amount: number;
-  payment_date: Date;
+  payment_id: number
+  customer_id: number
+  staff_id: number
+  rental_id: number
+  amount: number
+  payment_date: Date
 }
 export interface PaymentInput {
-  payment_id?: number;
-  customer_id: number;
-  staff_id: number;
-  rental_id: number;
-  amount: number;
-  payment_date: Date;
+  payment_id?: number
+  customer_id: number
+  staff_id: number
+  rental_id: number
+  amount: number
+  payment_date: Date
 }
 const payment = {
-  tableName: "payment",
-  columns: [
-    "payment_id",
-    "customer_id",
-    "staff_id",
-    "rental_id",
-    "amount",
-    "payment_date",
-  ],
-  requiredForInsert: [
-    "customer_id",
-    "staff_id",
-    "rental_id",
-    "amount",
-    "payment_date",
-  ],
-  primaryKey: "payment_id",
+  tableName: 'payment',
+  columns: ['payment_id', 'customer_id', 'staff_id', 'rental_id', 'amount', 'payment_date'],
+  requiredForInsert: ['customer_id', 'staff_id', 'rental_id', 'amount', 'payment_date'],
+  primaryKey: 'payment_id',
   foreignKeys: {
     customer_id: {
-      table: "customer",
-      column: "customer_id",
+      table: 'customer',
+      column: 'customer_id',
       $type: null as unknown as Customer,
     },
     staff_id: {
-      table: "staff",
-      column: "staff_id",
+      table: 'staff',
+      column: 'staff_id',
       $type: null as unknown as Staff,
     },
     rental_id: {
-      table: "rental",
-      column: "rental_id",
+      table: 'rental',
+      column: 'rental_id',
       $type: null as unknown as Rental,
     },
   },
   $type: null as unknown as Payment,
   $input: null as unknown as PaymentInput,
-} as const;
+} as const
 
 // Table payment_p2007_01
 export interface PaymentP200701 {
-  payment_id: number;
-  customer_id: number;
-  staff_id: number;
-  rental_id: number;
-  amount: number;
-  payment_date: Date;
+  payment_id: number
+  customer_id: number
+  staff_id: number
+  rental_id: number
+  amount: number
+  payment_date: Date
 }
 export interface PaymentP200701Input {
-  payment_id?: number;
-  customer_id: number;
-  staff_id: number;
-  rental_id: number;
-  amount: number;
-  payment_date: Date;
+  payment_id?: number
+  customer_id: number
+  staff_id: number
+  rental_id: number
+  amount: number
+  payment_date: Date
 }
 const payment_p2007_01 = {
-  tableName: "payment_p2007_01",
-  columns: [
-    "payment_id",
-    "customer_id",
-    "staff_id",
-    "rental_id",
-    "amount",
-    "payment_date",
-  ],
-  requiredForInsert: [
-    "customer_id",
-    "staff_id",
-    "rental_id",
-    "amount",
-    "payment_date",
-  ],
+  tableName: 'payment_p2007_01',
+  columns: ['payment_id', 'customer_id', 'staff_id', 'rental_id', 'amount', 'payment_date'],
+  requiredForInsert: ['customer_id', 'staff_id', 'rental_id', 'amount', 'payment_date'],
   primaryKey: null,
   foreignKeys: {
     customer_id: {
-      table: "customer",
-      column: "customer_id",
+      table: 'customer',
+      column: 'customer_id',
       $type: null as unknown as Customer,
     },
     staff_id: {
-      table: "staff",
-      column: "staff_id",
+      table: 'staff',
+      column: 'staff_id',
       $type: null as unknown as Staff,
     },
     rental_id: {
-      table: "rental",
-      column: "rental_id",
+      table: 'rental',
+      column: 'rental_id',
       $type: null as unknown as Rental,
     },
   },
   $type: null as unknown as PaymentP200701,
   $input: null as unknown as PaymentP200701Input,
-} as const;
+} as const
 
 // Table payment_p2007_02
 export interface PaymentP200702 {
-  payment_id: number;
-  customer_id: number;
-  staff_id: number;
-  rental_id: number;
-  amount: number;
-  payment_date: Date;
+  payment_id: number
+  customer_id: number
+  staff_id: number
+  rental_id: number
+  amount: number
+  payment_date: Date
 }
 export interface PaymentP200702Input {
-  payment_id?: number;
-  customer_id: number;
-  staff_id: number;
-  rental_id: number;
-  amount: number;
-  payment_date: Date;
+  payment_id?: number
+  customer_id: number
+  staff_id: number
+  rental_id: number
+  amount: number
+  payment_date: Date
 }
 const payment_p2007_02 = {
-  tableName: "payment_p2007_02",
-  columns: [
-    "payment_id",
-    "customer_id",
-    "staff_id",
-    "rental_id",
-    "amount",
-    "payment_date",
-  ],
-  requiredForInsert: [
-    "customer_id",
-    "staff_id",
-    "rental_id",
-    "amount",
-    "payment_date",
-  ],
+  tableName: 'payment_p2007_02',
+  columns: ['payment_id', 'customer_id', 'staff_id', 'rental_id', 'amount', 'payment_date'],
+  requiredForInsert: ['customer_id', 'staff_id', 'rental_id', 'amount', 'payment_date'],
   primaryKey: null,
   foreignKeys: {
     customer_id: {
-      table: "customer",
-      column: "customer_id",
+      table: 'customer',
+      column: 'customer_id',
       $type: null as unknown as Customer,
     },
     staff_id: {
-      table: "staff",
-      column: "staff_id",
+      table: 'staff',
+      column: 'staff_id',
       $type: null as unknown as Staff,
     },
     rental_id: {
-      table: "rental",
-      column: "rental_id",
+      table: 'rental',
+      column: 'rental_id',
       $type: null as unknown as Rental,
     },
   },
   $type: null as unknown as PaymentP200702,
   $input: null as unknown as PaymentP200702Input,
-} as const;
+} as const
 
 // Table payment_p2007_03
 export interface PaymentP200703 {
-  payment_id: number;
-  customer_id: number;
-  staff_id: number;
-  rental_id: number;
-  amount: number;
-  payment_date: Date;
+  payment_id: number
+  customer_id: number
+  staff_id: number
+  rental_id: number
+  amount: number
+  payment_date: Date
 }
 export interface PaymentP200703Input {
-  payment_id?: number;
-  customer_id: number;
-  staff_id: number;
-  rental_id: number;
-  amount: number;
-  payment_date: Date;
+  payment_id?: number
+  customer_id: number
+  staff_id: number
+  rental_id: number
+  amount: number
+  payment_date: Date
 }
 const payment_p2007_03 = {
-  tableName: "payment_p2007_03",
-  columns: [
-    "payment_id",
-    "customer_id",
-    "staff_id",
-    "rental_id",
-    "amount",
-    "payment_date",
-  ],
-  requiredForInsert: [
-    "customer_id",
-    "staff_id",
-    "rental_id",
-    "amount",
-    "payment_date",
-  ],
+  tableName: 'payment_p2007_03',
+  columns: ['payment_id', 'customer_id', 'staff_id', 'rental_id', 'amount', 'payment_date'],
+  requiredForInsert: ['customer_id', 'staff_id', 'rental_id', 'amount', 'payment_date'],
   primaryKey: null,
   foreignKeys: {
     customer_id: {
-      table: "customer",
-      column: "customer_id",
+      table: 'customer',
+      column: 'customer_id',
       $type: null as unknown as Customer,
     },
     staff_id: {
-      table: "staff",
-      column: "staff_id",
+      table: 'staff',
+      column: 'staff_id',
       $type: null as unknown as Staff,
     },
     rental_id: {
-      table: "rental",
-      column: "rental_id",
+      table: 'rental',
+      column: 'rental_id',
       $type: null as unknown as Rental,
     },
   },
   $type: null as unknown as PaymentP200703,
   $input: null as unknown as PaymentP200703Input,
-} as const;
+} as const
 
 // Table payment_p2007_04
 export interface PaymentP200704 {
-  payment_id: number;
-  customer_id: number;
-  staff_id: number;
-  rental_id: number;
-  amount: number;
-  payment_date: Date;
+  payment_id: number
+  customer_id: number
+  staff_id: number
+  rental_id: number
+  amount: number
+  payment_date: Date
 }
 export interface PaymentP200704Input {
-  payment_id?: number;
-  customer_id: number;
-  staff_id: number;
-  rental_id: number;
-  amount: number;
-  payment_date: Date;
+  payment_id?: number
+  customer_id: number
+  staff_id: number
+  rental_id: number
+  amount: number
+  payment_date: Date
 }
 const payment_p2007_04 = {
-  tableName: "payment_p2007_04",
-  columns: [
-    "payment_id",
-    "customer_id",
-    "staff_id",
-    "rental_id",
-    "amount",
-    "payment_date",
-  ],
-  requiredForInsert: [
-    "customer_id",
-    "staff_id",
-    "rental_id",
-    "amount",
-    "payment_date",
-  ],
+  tableName: 'payment_p2007_04',
+  columns: ['payment_id', 'customer_id', 'staff_id', 'rental_id', 'amount', 'payment_date'],
+  requiredForInsert: ['customer_id', 'staff_id', 'rental_id', 'amount', 'payment_date'],
   primaryKey: null,
   foreignKeys: {
     customer_id: {
-      table: "customer",
-      column: "customer_id",
+      table: 'customer',
+      column: 'customer_id',
       $type: null as unknown as Customer,
     },
     staff_id: {
-      table: "staff",
-      column: "staff_id",
+      table: 'staff',
+      column: 'staff_id',
       $type: null as unknown as Staff,
     },
     rental_id: {
-      table: "rental",
-      column: "rental_id",
+      table: 'rental',
+      column: 'rental_id',
       $type: null as unknown as Rental,
     },
   },
   $type: null as unknown as PaymentP200704,
   $input: null as unknown as PaymentP200704Input,
-} as const;
+} as const
 
 // Table payment_p2007_05
 export interface PaymentP200705 {
-  payment_id: number;
-  customer_id: number;
-  staff_id: number;
-  rental_id: number;
-  amount: number;
-  payment_date: Date;
+  payment_id: number
+  customer_id: number
+  staff_id: number
+  rental_id: number
+  amount: number
+  payment_date: Date
 }
 export interface PaymentP200705Input {
-  payment_id?: number;
-  customer_id: number;
-  staff_id: number;
-  rental_id: number;
-  amount: number;
-  payment_date: Date;
+  payment_id?: number
+  customer_id: number
+  staff_id: number
+  rental_id: number
+  amount: number
+  payment_date: Date
 }
 const payment_p2007_05 = {
-  tableName: "payment_p2007_05",
-  columns: [
-    "payment_id",
-    "customer_id",
-    "staff_id",
-    "rental_id",
-    "amount",
-    "payment_date",
-  ],
-  requiredForInsert: [
-    "customer_id",
-    "staff_id",
-    "rental_id",
-    "amount",
-    "payment_date",
-  ],
+  tableName: 'payment_p2007_05',
+  columns: ['payment_id', 'customer_id', 'staff_id', 'rental_id', 'amount', 'payment_date'],
+  requiredForInsert: ['customer_id', 'staff_id', 'rental_id', 'amount', 'payment_date'],
   primaryKey: null,
   foreignKeys: {
     customer_id: {
-      table: "customer",
-      column: "customer_id",
+      table: 'customer',
+      column: 'customer_id',
       $type: null as unknown as Customer,
     },
     staff_id: {
-      table: "staff",
-      column: "staff_id",
+      table: 'staff',
+      column: 'staff_id',
       $type: null as unknown as Staff,
     },
     rental_id: {
-      table: "rental",
-      column: "rental_id",
+      table: 'rental',
+      column: 'rental_id',
       $type: null as unknown as Rental,
     },
   },
   $type: null as unknown as PaymentP200705,
   $input: null as unknown as PaymentP200705Input,
-} as const;
+} as const
 
 // Table payment_p2007_06
 export interface PaymentP200706 {
-  payment_id: number;
-  customer_id: number;
-  staff_id: number;
-  rental_id: number;
-  amount: number;
-  payment_date: Date;
+  payment_id: number
+  customer_id: number
+  staff_id: number
+  rental_id: number
+  amount: number
+  payment_date: Date
 }
 export interface PaymentP200706Input {
-  payment_id?: number;
-  customer_id: number;
-  staff_id: number;
-  rental_id: number;
-  amount: number;
-  payment_date: Date;
+  payment_id?: number
+  customer_id: number
+  staff_id: number
+  rental_id: number
+  amount: number
+  payment_date: Date
 }
 const payment_p2007_06 = {
-  tableName: "payment_p2007_06",
-  columns: [
-    "payment_id",
-    "customer_id",
-    "staff_id",
-    "rental_id",
-    "amount",
-    "payment_date",
-  ],
-  requiredForInsert: [
-    "customer_id",
-    "staff_id",
-    "rental_id",
-    "amount",
-    "payment_date",
-  ],
+  tableName: 'payment_p2007_06',
+  columns: ['payment_id', 'customer_id', 'staff_id', 'rental_id', 'amount', 'payment_date'],
+  requiredForInsert: ['customer_id', 'staff_id', 'rental_id', 'amount', 'payment_date'],
   primaryKey: null,
   foreignKeys: {
     customer_id: {
-      table: "customer",
-      column: "customer_id",
+      table: 'customer',
+      column: 'customer_id',
       $type: null as unknown as Customer,
     },
     staff_id: {
-      table: "staff",
-      column: "staff_id",
+      table: 'staff',
+      column: 'staff_id',
       $type: null as unknown as Staff,
     },
     rental_id: {
-      table: "rental",
-      column: "rental_id",
+      table: 'rental',
+      column: 'rental_id',
       $type: null as unknown as Rental,
     },
   },
   $type: null as unknown as PaymentP200706,
   $input: null as unknown as PaymentP200706Input,
-} as const;
+} as const
 
 // Table rental
 export interface Rental {
-  rental_id: number;
-  rental_date: Date;
-  inventory_id: number;
-  customer_id: number;
-  return_date: Date | null;
-  staff_id: number;
-  last_update: Date;
+  rental_id: number
+  rental_date: Date
+  inventory_id: number
+  customer_id: number
+  return_date: Date | null
+  staff_id: number
+  last_update: Date
 }
 export interface RentalInput {
-  rental_id?: number;
-  rental_date: Date;
-  inventory_id: number;
-  customer_id: number;
-  return_date?: Date | null;
-  staff_id: number;
-  last_update?: Date;
+  rental_id?: number
+  rental_date: Date
+  inventory_id: number
+  customer_id: number
+  return_date?: Date | null
+  staff_id: number
+  last_update?: Date
 }
 const rental = {
-  tableName: "rental",
-  columns: [
-    "rental_id",
-    "rental_date",
-    "inventory_id",
-    "customer_id",
-    "return_date",
-    "staff_id",
-    "last_update",
-  ],
-  requiredForInsert: ["rental_date", "inventory_id", "customer_id", "staff_id"],
-  primaryKey: "rental_id",
+  tableName: 'rental',
+  columns: ['rental_id', 'rental_date', 'inventory_id', 'customer_id', 'return_date', 'staff_id', 'last_update'],
+  requiredForInsert: ['rental_date', 'inventory_id', 'customer_id', 'staff_id'],
+  primaryKey: 'rental_id',
   foreignKeys: {
     inventory_id: {
-      table: "inventory",
-      column: "inventory_id",
+      table: 'inventory',
+      column: 'inventory_id',
       $type: null as unknown as Inventory,
     },
     customer_id: {
-      table: "customer",
-      column: "customer_id",
+      table: 'customer',
+      column: 'customer_id',
       $type: null as unknown as Customer,
     },
     staff_id: {
-      table: "staff",
-      column: "staff_id",
+      table: 'staff',
+      column: 'staff_id',
       $type: null as unknown as Staff,
     },
   },
   $type: null as unknown as Rental,
   $input: null as unknown as RentalInput,
-} as const;
+} as const
 
 // Table sales_by_film_category
 export interface SalesByFilmCategory {
-  category: string | null;
-  total_sales: number | null;
+  category: string | null
+  total_sales: number | null
 }
 export interface SalesByFilmCategoryInput {
-  category?: string | null;
-  total_sales?: number | null;
+  category?: string | null
+  total_sales?: number | null
 }
 const sales_by_film_category = {
-  tableName: "sales_by_film_category",
-  columns: ["category", "total_sales"],
+  tableName: 'sales_by_film_category',
+  columns: ['category', 'total_sales'],
   requiredForInsert: [],
   primaryKey: null,
   foreignKeys: {},
   $type: null as unknown as SalesByFilmCategory,
   $input: null as unknown as SalesByFilmCategoryInput,
-} as const;
+} as const
 
 // Table sales_by_store
 export interface SalesByStore {
-  store: string | null;
-  manager: string | null;
-  total_sales: number | null;
+  store: string | null
+  manager: string | null
+  total_sales: number | null
 }
 export interface SalesByStoreInput {
-  store?: string | null;
-  manager?: string | null;
-  total_sales?: number | null;
+  store?: string | null
+  manager?: string | null
+  total_sales?: number | null
 }
 const sales_by_store = {
-  tableName: "sales_by_store",
-  columns: ["store", "manager", "total_sales"],
+  tableName: 'sales_by_store',
+  columns: ['store', 'manager', 'total_sales'],
   requiredForInsert: [],
   primaryKey: null,
   foreignKeys: {},
   $type: null as unknown as SalesByStore,
   $input: null as unknown as SalesByStoreInput,
-} as const;
+} as const
 
 // Table staff
 export interface Staff {
-  staff_id: number;
-  first_name: string;
-  last_name: string;
-  address_id: number;
-  email: string | null;
-  store_id: number;
-  active: boolean;
-  username: string;
-  password: string | null;
-  last_update: Date;
-  picture: string | null;
+  staff_id: number
+  first_name: string
+  last_name: string
+  address_id: number
+  email: string | null
+  store_id: number
+  active: boolean
+  username: string
+  password: string | null
+  last_update: Date
+  picture: string | null
 }
 export interface StaffInput {
-  staff_id?: number;
-  first_name: string;
-  last_name: string;
-  address_id: number;
-  email?: string | null;
-  store_id: number;
-  active?: boolean;
-  username: string;
-  password?: string | null;
-  last_update?: Date;
-  picture?: string | null;
+  staff_id?: number
+  first_name: string
+  last_name: string
+  address_id: number
+  email?: string | null
+  store_id: number
+  active?: boolean
+  username: string
+  password?: string | null
+  last_update?: Date
+  picture?: string | null
 }
 const staff = {
-  tableName: "staff",
+  tableName: 'staff',
   columns: [
-    "staff_id",
-    "first_name",
-    "last_name",
-    "address_id",
-    "email",
-    "store_id",
-    "active",
-    "username",
-    "password",
-    "last_update",
-    "picture",
+    'staff_id',
+    'first_name',
+    'last_name',
+    'address_id',
+    'email',
+    'store_id',
+    'active',
+    'username',
+    'password',
+    'last_update',
+    'picture',
   ],
-  requiredForInsert: [
-    "first_name",
-    "last_name",
-    "address_id",
-    "store_id",
-    "username",
-  ],
-  primaryKey: "staff_id",
+  requiredForInsert: ['first_name', 'last_name', 'address_id', 'store_id', 'username'],
+  primaryKey: 'staff_id',
   foreignKeys: {
     address_id: {
-      table: "address",
-      column: "address_id",
+      table: 'address',
+      column: 'address_id',
       $type: null as unknown as Address,
     },
     store_id: {
-      table: "store",
-      column: "store_id",
+      table: 'store',
+      column: 'store_id',
       $type: null as unknown as Store,
     },
   },
   $type: null as unknown as Staff,
   $input: null as unknown as StaffInput,
-} as const;
+} as const
 
 // Table staff_list
 export interface StaffList {
-  id: number | null;
-  name: string | null;
-  address: string | null;
-  "zip code": string | null;
-  phone: string | null;
-  city: string | null;
-  country: string | null;
-  sid: number | null;
+  id: number | null
+  name: string | null
+  address: string | null
+  'zip code': string | null
+  phone: string | null
+  city: string | null
+  country: string | null
+  sid: number | null
 }
 export interface StaffListInput {
-  id?: number | null;
-  name?: string | null;
-  address?: string | null;
-  "zip code"?: string | null;
-  phone?: string | null;
-  city?: string | null;
-  country?: string | null;
-  sid?: number | null;
+  id?: number | null
+  name?: string | null
+  address?: string | null
+  'zip code'?: string | null
+  phone?: string | null
+  city?: string | null
+  country?: string | null
+  sid?: number | null
 }
 const staff_list = {
-  tableName: "staff_list",
-  columns: [
-    "id",
-    "name",
-    "address",
-    "zip code",
-    "phone",
-    "city",
-    "country",
-    "sid",
-  ],
+  tableName: 'staff_list',
+  columns: ['id', 'name', 'address', 'zip code', 'phone', 'city', 'country', 'sid'],
   requiredForInsert: [],
   primaryKey: null,
   foreignKeys: {},
   $type: null as unknown as StaffList,
   $input: null as unknown as StaffListInput,
-} as const;
+} as const
 
 // Table store
 export interface Store {
-  store_id: number;
-  manager_staff_id: number;
-  address_id: number;
-  last_update: Date;
+  store_id: number
+  manager_staff_id: number
+  address_id: number
+  last_update: Date
 }
 export interface StoreInput {
-  store_id?: number;
-  manager_staff_id: number;
-  address_id: number;
-  last_update?: Date;
+  store_id?: number
+  manager_staff_id: number
+  address_id: number
+  last_update?: Date
 }
 const store = {
-  tableName: "store",
-  columns: ["store_id", "manager_staff_id", "address_id", "last_update"],
-  requiredForInsert: ["manager_staff_id", "address_id"],
-  primaryKey: "store_id",
+  tableName: 'store',
+  columns: ['store_id', 'manager_staff_id', 'address_id', 'last_update'],
+  requiredForInsert: ['manager_staff_id', 'address_id'],
+  primaryKey: 'store_id',
   foreignKeys: {
     manager_staff_id: {
-      table: "staff",
-      column: "staff_id",
+      table: 'staff',
+      column: 'staff_id',
       $type: null as unknown as Staff,
     },
     address_id: {
-      table: "address",
-      column: "address_id",
+      table: 'address',
+      column: 'address_id',
       $type: null as unknown as Address,
     },
   },
   $type: null as unknown as Store,
   $input: null as unknown as StoreInput,
-} as const;
+} as const
 
 export interface TableTypes {
   actor: {
-    select: Actor;
-    input: ActorInput;
-  };
+    select: Actor
+    input: ActorInput
+  }
   actor_info: {
-    select: ActorInfo;
-    input: ActorInfoInput;
-  };
+    select: ActorInfo
+    input: ActorInfoInput
+  }
   address: {
-    select: Address;
-    input: AddressInput;
-  };
+    select: Address
+    input: AddressInput
+  }
   category: {
-    select: Category;
-    input: CategoryInput;
-  };
+    select: Category
+    input: CategoryInput
+  }
   city: {
-    select: City;
-    input: CityInput;
-  };
+    select: City
+    input: CityInput
+  }
   country: {
-    select: Country;
-    input: CountryInput;
-  };
+    select: Country
+    input: CountryInput
+  }
   customer: {
-    select: Customer;
-    input: CustomerInput;
-  };
+    select: Customer
+    input: CustomerInput
+  }
   customer_list: {
-    select: CustomerList;
-    input: CustomerListInput;
-  };
+    select: CustomerList
+    input: CustomerListInput
+  }
   film: {
-    select: Film;
-    input: FilmInput;
-  };
+    select: Film
+    input: FilmInput
+  }
   film_actor: {
-    select: FilmActor;
-    input: FilmActorInput;
-  };
+    select: FilmActor
+    input: FilmActorInput
+  }
   film_category: {
-    select: FilmCategory;
-    input: FilmCategoryInput;
-  };
+    select: FilmCategory
+    input: FilmCategoryInput
+  }
   film_list: {
-    select: FilmList;
-    input: FilmListInput;
-  };
+    select: FilmList
+    input: FilmListInput
+  }
   inventory: {
-    select: Inventory;
-    input: InventoryInput;
-  };
+    select: Inventory
+    input: InventoryInput
+  }
   language: {
-    select: Language;
-    input: LanguageInput;
-  };
+    select: Language
+    input: LanguageInput
+  }
   nicer_but_slower_film_list: {
-    select: NicerButSlowerFilmList;
-    input: NicerButSlowerFilmListInput;
-  };
+    select: NicerButSlowerFilmList
+    input: NicerButSlowerFilmListInput
+  }
   payment: {
-    select: Payment;
-    input: PaymentInput;
-  };
+    select: Payment
+    input: PaymentInput
+  }
   payment_p2007_01: {
-    select: PaymentP200701;
-    input: PaymentP200701Input;
-  };
+    select: PaymentP200701
+    input: PaymentP200701Input
+  }
   payment_p2007_02: {
-    select: PaymentP200702;
-    input: PaymentP200702Input;
-  };
+    select: PaymentP200702
+    input: PaymentP200702Input
+  }
   payment_p2007_03: {
-    select: PaymentP200703;
-    input: PaymentP200703Input;
-  };
+    select: PaymentP200703
+    input: PaymentP200703Input
+  }
   payment_p2007_04: {
-    select: PaymentP200704;
-    input: PaymentP200704Input;
-  };
+    select: PaymentP200704
+    input: PaymentP200704Input
+  }
   payment_p2007_05: {
-    select: PaymentP200705;
-    input: PaymentP200705Input;
-  };
+    select: PaymentP200705
+    input: PaymentP200705Input
+  }
   payment_p2007_06: {
-    select: PaymentP200706;
-    input: PaymentP200706Input;
-  };
+    select: PaymentP200706
+    input: PaymentP200706Input
+  }
   rental: {
-    select: Rental;
-    input: RentalInput;
-  };
+    select: Rental
+    input: RentalInput
+  }
   sales_by_film_category: {
-    select: SalesByFilmCategory;
-    input: SalesByFilmCategoryInput;
-  };
+    select: SalesByFilmCategory
+    input: SalesByFilmCategoryInput
+  }
   sales_by_store: {
-    select: SalesByStore;
-    input: SalesByStoreInput;
-  };
+    select: SalesByStore
+    input: SalesByStoreInput
+  }
   staff: {
-    select: Staff;
-    input: StaffInput;
-  };
+    select: Staff
+    input: StaffInput
+  }
   staff_list: {
-    select: StaffList;
-    input: StaffListInput;
-  };
+    select: StaffList
+    input: StaffListInput
+  }
   store: {
-    select: Store;
-    input: StoreInput;
-  };
+    select: Store
+    input: StoreInput
+  }
 }
 
 export const tables = {
@@ -1312,4 +1161,4 @@ export const tables = {
   staff,
   staff_list,
   store,
-};
+}

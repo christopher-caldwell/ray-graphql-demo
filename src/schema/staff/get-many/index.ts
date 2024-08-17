@@ -1,10 +1,8 @@
-import { builder } from "@/schema/builder";
-import { staff } from "../schema";
-import { Staff } from "@/types/schema";
-import { readSqlFile } from "@/utils";
+import { builder } from '@/schema/builder'
+import { staff } from '../schema'
+import { getManyStaffMembers } from './queries'
 
-const query = readSqlFile(__dirname, "query.sql");
-builder.queryField("staffMembers", (t) =>
+builder.queryField('staffMembers', (t) =>
   t.field({
     type: [staff],
     args: {
@@ -12,9 +10,8 @@ builder.queryField("staffMembers", (t) =>
       offset: t.arg.int({ required: false }),
     },
     async resolve(_, { limit, offset }, { dbClient }) {
-      const staffMembers = await dbClient.query<Staff>(query, [limit, offset]);
-
-      return staffMembers.rows;
+      const result = await getManyStaffMembers.run({ limit, offset }, dbClient)
+      return result
     },
   }),
-);
+)

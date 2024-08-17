@@ -1,5 +1,5 @@
-import { PoolClient } from "pg";
+import { PoolClient } from 'pg'
 
 export type ResolverContext = {
-  dbClient: PoolClient;
-};
+  dbClient: PoolClient
+}

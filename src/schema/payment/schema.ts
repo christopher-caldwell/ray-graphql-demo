@@ -1,20 +1,20 @@
-import { builder } from "../builder";
-import { Payment } from "@/types/schema";
+import { builder } from '../builder'
+import { Payment } from '@/types/schema'
 
-export const payment = builder.objectRef<Payment>("Payment");
+export const payment = builder.objectRef<Payment>('Payment')
 
 payment.implement({
   fields: (t) => ({
-    paymentId: t.exposeInt("payment_id"),
-    amount: t.exposeFloat("amount"),
+    paymentId: t.exposeInt('payment_id'),
+    amount: t.exposeFloat('amount'),
 
     //----- Relationships -----//
     // customer
     // staff
     // rental
     paymentDate: t.field({
-      type: "DateTime",
+      type: 'DateTime',
       resolve: (t) => t.payment_date,
     }),
   }),
-});
+})

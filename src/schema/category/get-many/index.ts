@@ -1,10 +1,8 @@
-import { builder } from "@/schema/builder";
-import { category } from "../schema";
-import { Category } from "@/types/schema";
-import { readSqlFile } from "@/utils";
+import { builder } from '@/schema/builder'
+import { category } from '../schema'
+import { getManyCategories } from './queries'
 
-const query = readSqlFile(__dirname, "query.sql");
-builder.queryField("categories", (t) =>
+builder.queryField('categories', (t) =>
   t.field({
     type: [category],
     args: {
@@ -12,9 +10,8 @@ builder.queryField("categories", (t) =>
       offset: t.arg.int({ required: false }),
     },
     async resolve(_, { limit, offset }, { dbClient }) {
-      const actors = await dbClient.query<Category>(query, [limit, offset]);
-
-      return actors.rows;
+      const result = await getManyCategories.run({ limit, offset }, dbClient)
+      return result
     },
   }),
-);
+)

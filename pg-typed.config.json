@@ -6,7 +6,11 @@
       "emitTemplate": "{{dir}}/queries.ts"
     }
   ],
-  "srcDir": "./src/schema/actor",
+  "srcDir": "./src/schema",
   "failOnError": false,
-  "camelCaseColumnNames": false
+  "camelCaseColumnNames": false,
+  "typesOverrides": {
+    "numeric": "number",
+    "bytea": "string"
+  }
 }

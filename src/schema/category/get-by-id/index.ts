@@ -1,10 +1,11 @@
-import { builder } from "@/schema/builder";
-import { category } from "../../category/schema";
-import { Category } from "@/types/schema";
-import { readSqlFile } from "@/utils";
+import { builder } from '@/schema/builder'
+import { category } from '../../category/schema'
+import { Category } from '@/types/schema'
+import { readSqlFile } from '@/utils'
+import { getCategoryById } from './queries'
 
-const query = readSqlFile(__dirname, "query.sql");
-builder.queryField("category", (t) =>
+const query = readSqlFile(__dirname, 'query.sql')
+builder.queryField('category', (t) =>
   t.field({
     type: category,
     args: {
@@ -12,15 +13,15 @@ builder.queryField("category", (t) =>
     },
     nullable: true,
     async resolve(_, { categoryId }, { dbClient }) {
-      const categories = await dbClient.query<Category>(query, [categoryId]);
+      const result = await getCategoryById.run({ categoryId }, dbClient)
 
-      if (!categories.rows.length) {
-        return null;
+      if (!result.length) {
+        return null
       }
-      if (categories.rows.length > 1) {
-        throw new Error("Expected only one category");
+      if (result.length > 1) {
+        throw new Error('Expected only one')
       }
-      return categories.rows[0];
+      return result[0]
     },
   }),
-);
+)

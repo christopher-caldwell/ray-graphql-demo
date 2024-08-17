@@ -1,10 +1,11 @@
-import { builder } from "@/schema/builder";
-import { film } from "../schema";
-import { Film } from "@/types/schema";
-import { readSqlFile } from "@/utils";
+import { builder } from '@/schema/builder'
+import { film } from '../schema'
+import { Film } from '@/types/schema'
+import { readSqlFile } from '@/utils'
+import { getFilmById } from './queries'
 
-const query = readSqlFile(__dirname, "query.sql");
-builder.queryField("film", (t) =>
+const query = readSqlFile(__dirname, 'query.sql')
+builder.queryField('film', (t) =>
   t.field({
     type: film,
     args: {
@@ -12,15 +13,15 @@ builder.queryField("film", (t) =>
     },
     nullable: true,
     async resolve(_, { filmId }, { dbClient }) {
-      const films = await dbClient.query<Film>(query, [filmId]);
-
-      if (!films.rows.length) {
-        return null;
+      const result = await getFilmById.run({ filmId }, dbClient)
+      console.log('result', result)
+      if (!result.length) {
+        return null
       }
-      if (films.rows.length > 1) {
-        throw new Error("Expected only one category");
+      if (result.length > 1) {
+        throw new Error('Expected only one')
       }
-      return films.rows[0];
+      return result[0]
     },
   }),
-);
+)
