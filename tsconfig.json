@@ -3,8 +3,6 @@
     "strict": true,
     "baseUrl": "src",
     "esModuleInterop": true,
-    "moduleResolution": "NodeNext",
-    "module": "es2020",
     "paths": {
       "@/*": ["./*"]
     }

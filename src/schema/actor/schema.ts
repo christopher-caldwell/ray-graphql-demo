@@ -5,14 +5,13 @@ export const actor = builder.objectRef<Actor>('Actor')
 
 actor.implement({
   fields: (t) => ({
-    actorId: t.exposeID('actor_id'),
-    // content: t.exposeString('content', { nullable: true }),
-    // emailId: t.exposeString('emailId', { nullable: true }),
-    // projectId: t.exposeString('projectId', { nullable: true }),
-    // contractId: t.exposeString('contractId', { nullable: true }),
-    // proposalId: t.exposeString('proposalId', { nullable: true }),
+    actorId: t.exposeInt('actor_id'),
+    first_name: t.exposeString('first_name'),
+    last_name: t.exposeString('last_name'),
+
     //----- Relationships -----//
-  
+    // films starred in
+
     dateModified: t.field({
       type: 'DateTime',
       resolve: (t) => t.last_update,

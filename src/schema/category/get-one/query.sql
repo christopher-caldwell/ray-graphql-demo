@@ -1,0 +1,1 @@
+SELECT * FROM ACTOR WHERE actor_id = $1;

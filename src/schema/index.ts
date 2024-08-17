@@ -1,4 +1,6 @@
 import './actor'
+import './category'
+import './film'
 
 import { builder } from './builder'
 

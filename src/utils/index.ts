@@ -13,3 +13,12 @@ export const readSqlFile = (dir: string, fileName: string): string => {
     return 'Could not find'
   }
 }
+
+type QueryReducerArray = [string, unknown[], number]
+export const parameterizeQuery = (parameterizedSql: string, params: Record<string, unknown>) => {
+  const [text, values] = Object.entries(params).reduce<QueryReducerArray>(
+    ([sql, array, index], [key, value]) => [sql.replace(`:${key}`, `$${index}`), [...array, value], index + 1],
+    [parameterizedSql, [], 1],
+  )
+  return { text, values }
+}
