@@ -8,8 +8,8 @@
     "type-check": "tsc --noEmit",
     "db:up": "docker compose up",
     "db:down": "docker compose down",
-    "db:generate:types": ". .env && pg-to-ts generate -c postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST/$POSTGRES_DB -o src/types/schema.ts",
-    "db:generate:queries": ". .env && pgtyped -w -c pg-typed.config.json --uri postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST/$POSTGRES_DB",
+    "db:generate:types": ". .env && pg-to-ts generate -c postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST/$POSTGRES_DB -o src/types/schema.ts && yarn format",
+    "db:generate:queries": ". .env && pgtyped -w -c pg-typed.config.json --uri postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST/$POSTGRES_DB && yarn format",
     "start:dev": "tsx watch src/index.ts"
   },
   "devDependencies": {
