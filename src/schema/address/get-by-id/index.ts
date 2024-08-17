@@ -1,18 +1,18 @@
 import { builder } from "@/schema/builder";
-import { actor } from "../schema";
-import { Actor } from "@/types/schema";
+import { address } from "../schema";
+import { Address } from "@/types/schema";
 import { readSqlFile } from "@/utils";
 
 const query = readSqlFile(__dirname, "query.sql");
-builder.queryField("actor", (t) =>
+builder.queryField("address", (t) =>
   t.field({
-    type: actor,
+    type: address,
     args: {
       actorId: t.arg.int({ required: true }),
     },
     nullable: true,
     async resolve(_, { actorId }, { dbClient }) {
-      const actor = await dbClient.query<Actor>(query, [actorId]);
+      const actor = await dbClient.query<Address>(query, [actorId]);
 
       if (!actor.rows.length) {
         return null;
