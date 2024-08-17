@@ -6,9 +6,11 @@
     "db:up": "docker compose up",
     "db:down": "docker compose down",
     "db:generate:types": ". .env && pg-to-ts generate -c postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST/$POSTGRES_DB -o src/types/schema.ts",
+    "db:generate:queries": "pgtyped -w -c pg-typed.config.json --uri postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST/$POSTGRES_DB",
     "start:dev": "tsx watch src/index.ts"
   },
   "devDependencies": {
+    "@pgtyped/cli": "^2.3.0",
     "@types/express": "^4.17.21",
     "@types/pg": "^8.11.6",
     "@typescript-eslint/eslint-plugin": "^8.1.0",
@@ -23,6 +25,7 @@
   },
   "dependencies": {
     "@caldwell619/data-loader": "0.0.9-alpha.0",
+    "@pgtyped/runtime": "^2.3.0",
     "@pothos/core": "^4.2.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
