@@ -1,10 +1,13 @@
-// import { DataLoader } from '@caldwell619/data-loader'
-// import { inArray } from 'drizzle-orm'
-// import { db, Activity, activityModel } from '@_models'
+import { DataLoader } from '@caldwell619/data-loader'
+import { Actor } from '@/types/schema'
+import { PgPool } from '@/db'
 
-// export const ActivityLoader = new DataLoader<Activity, string>({
-//   async fetcher(ids) {
-//     const results = await db.query.activityModel.findMany({ where: inArray(activityModel.id, ids) })
-//     return results
-//   },
-// })
+export const ActorLoader = new DataLoader<Actor, number>({
+  async fetcher(ids) {
+    const client = await PgPool.connect()
+    const { rows } = await client.query(`SELECT * FROM actor WHERE actor_id IN ($1)`, [ids])
+    client.release()
+    return rows
+  },
+  keyOfId: 'actor_id',
+})
