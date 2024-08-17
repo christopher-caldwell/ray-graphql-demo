@@ -1,1 +1,4 @@
-SELECT * FROM country LIMIT $1 OFFSET $2;
+/* @name getManyCountries */
+SELECT * FROM country 
+  LIMIT :limit 
+  OFFSET :offset;

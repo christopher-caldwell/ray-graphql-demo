@@ -1,1 +1,2 @@
-SELECT * FROM STAFF WHERE staff_id = $1;
+/* @name getStaffMemberById */
+SELECT * FROM STAFF WHERE staff_id = :staffId;

@@ -1,1 +1,4 @@
-SELECT * FROM STAFF LIMIT $1 OFFSET $2;
+/* @name getManyStaffMembers */
+SELECT * FROM staff 
+  LIMIT :limit 
+  OFFSET :offset;

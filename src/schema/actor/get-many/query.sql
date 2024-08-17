@@ -1,1 +1,2 @@
-SELECT * FROM ACTOR LIMIT $1 OFFSET $2;
+/* @name getManyActors */
+SELECT * FROM actor LIMIT :limit OFFSET :offset;

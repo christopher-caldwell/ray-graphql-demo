@@ -1,1 +1,2 @@
-SELECT * FROM CATEGORY WHERE category_id = $1;
+/* @name getCategoryById */
+SELECT * FROM category WHERE category_id = :categoryId;

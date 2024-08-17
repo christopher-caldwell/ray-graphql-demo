@@ -1,1 +1,4 @@
-SELECT * FROM CATEGORY LIMIT $1 OFFSET $2;
+/* @name getManyCategories */
+SELECT * FROM category 
+  LIMIT :limit 
+  OFFSET :offset;

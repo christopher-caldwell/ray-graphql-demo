@@ -1,1 +1,2 @@
-SELECT * FROM FILM WHERE film_id = $1;
+/* @name getFilmById */
+SELECT * FROM FILM WHERE film_id = :filmId;

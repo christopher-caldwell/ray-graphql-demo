@@ -1,1 +1,2 @@
-SELECT * FROM address LIMIT $1 OFFSET $2;
+/* @name getManyAddresses */
+SELECT * FROM address LIMIT :limit OFFSET :offset;

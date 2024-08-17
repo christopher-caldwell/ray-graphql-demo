@@ -1,1 +1,2 @@
-SELECT * FROM ACTOR WHERE actor_id = $1;
+/* @name getActorById */
+SELECT * FROM actor WHERE actor_id = :actorId;

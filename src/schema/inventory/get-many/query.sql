@@ -1,1 +1,4 @@
-SELECT * FROM inventory LIMIT $1 OFFSET $2;
+/* @name getManyInventories */
+SELECT * FROM inventory 
+  LIMIT :limit 
+  OFFSET :offset;

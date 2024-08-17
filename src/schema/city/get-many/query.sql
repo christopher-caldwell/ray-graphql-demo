@@ -1,1 +1,4 @@
-SELECT * FROM city LIMIT $1 OFFSET $2;
+/* @name getManyCities */
+SELECT * FROM city 
+  LIMIT :limit 
+  OFFSET :offset;

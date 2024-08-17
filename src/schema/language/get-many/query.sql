@@ -1,1 +1,4 @@
-SELECT * FROM language LIMIT $1 OFFSET $2;
+/* @name getManyLanguages */
+SELECT * FROM language 
+  LIMIT :limit 
+  OFFSET :offset;

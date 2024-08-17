@@ -1,1 +1,4 @@
-SELECT * FROM rental LIMIT $1 OFFSET $2;
+/* @name getManyStores */
+SELECT * FROM store 
+  LIMIT :limit 
+  OFFSET :offset;

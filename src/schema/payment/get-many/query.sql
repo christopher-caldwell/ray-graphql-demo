@@ -1,1 +1,4 @@
-SELECT * FROM payment LIMIT $1 OFFSET $2;
+/* @name getManyPayments */
+SELECT * FROM payment 
+  LIMIT :limit 
+  OFFSET :offset;

@@ -3,10 +3,10 @@
     {
       "mode": "sql",
       "include": "**/*.sql",
-      "emitTemplate": "{{dir}}/{{name}}.queries.ts"
+      "emitTemplate": "{{dir}}/queries.ts"
     }
   ],
-  "srcDir": "./src/schema",
+  "srcDir": "./src/schema/actor",
   "failOnError": false,
   "camelCaseColumnNames": false
 }

@@ -1,1 +1,2 @@
-SELECT * FROM ACTOR WHERE actor_id = $1;
+/* @name getAddressById */
+SELECT * FROM address WHERE address_id = :address_id;

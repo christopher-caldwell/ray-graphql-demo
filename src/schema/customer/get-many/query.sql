@@ -1,1 +1,4 @@
-SELECT * FROM customer LIMIT $1 OFFSET $2;
+/* @name getManyCustomers */
+SELECT * FROM customer 
+  LIMIT :limit 
+  OFFSET :offset;
