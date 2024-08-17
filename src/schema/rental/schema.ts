@@ -1,5 +1,11 @@
 import { builder } from '../builder'
 import { Rental } from '@/types/schema'
+import { customer } from '../customer'
+import { CustomerLoader } from '../customer/loader'
+import { staff } from '../staff'
+import { StaffLoader } from '../staff/loader'
+import { inventory } from '../inventory'
+import { InventoryLoader } from '../inventory/loader'
 
 export const rental = builder.objectRef<Rental>('Rental')
 
@@ -19,9 +25,24 @@ rental.implement({
     staffId: t.exposeInt('staff_id'),
 
     //----- Relationships -----//
-    // customer
-    // staff
-    // inventory
+    customer: t.field({
+      type: customer,
+      resolve(parentRental) {
+        return CustomerLoader.load(parentRental.customer_id)
+      },
+    }),
+    staff: t.field({
+      type: staff,
+      resolve(parentRental) {
+        return StaffLoader.load(parentRental.staff_id)
+      },
+    }),
+    inventory: t.field({
+      type: inventory,
+      resolve(parentRental) {
+        return InventoryLoader.load(parentRental.inventory_id)
+      },
+    }),
     //----- Timestamp(s) -----//
     dateModified: t.field({
       type: 'DateTime',

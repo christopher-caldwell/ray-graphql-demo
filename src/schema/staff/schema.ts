@@ -1,5 +1,9 @@
+import { address } from '../address'
+import { AddressLoader } from '../address/loader'
 import { builder } from '../builder'
 import { Staff } from '@/types/schema'
+import { StoreLoader } from '../store/loader'
+import { store } from '../store'
 
 export const staff = builder.objectRef<Staff>('Staff')
 
@@ -16,8 +20,18 @@ staff.implement({
     password: t.exposeString('password'),
     picture: t.exposeString('picture'),
     //----- Relationships -----//
-    // address
-    // store
+    address: t.field({
+      type: address,
+      resolve(parentStaff) {
+        return AddressLoader.load(parentStaff.address_id)
+      },
+    }),
+    store: t.field({
+      type: store,
+      resolve(parentStaff) {
+        return StoreLoader.load(parentStaff.store_id)
+      },
+    }),
     //----- Standard -----//
     staffId: t.exposeID('staff_id'),
     dateModified: t.field({

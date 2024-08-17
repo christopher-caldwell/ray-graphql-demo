@@ -15,7 +15,6 @@ address.implement({
     postalCode: t.exposeString('postal_code'),
     phone: t.exposeString('phone'),
     //----- Relationships -----//
-    // city
     city: t.field({
       type: city,
       resolve(parentAddress) {
