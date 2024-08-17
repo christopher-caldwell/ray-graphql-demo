@@ -8,13 +8,13 @@ staff.implement({
     //----- Attrs -----//
     firstName: t.exposeString('first_name'),
     lastName: t.exposeString('last_name'),
+    addressId: t.exposeInt('address_id'),
     email: t.exposeString('email'),
+    storeId: t.exposeInt('store_id'),
     active: t.exposeBoolean('active'),
     username: t.exposeString('username'),
     password: t.exposeString('password'),
     picture: t.exposeString('picture'),
-    addressId: t.exposeInt('address_id'),
-    storeId: t.exposeInt('store_id'),
     //----- Relationships -----//
     // address
     // store

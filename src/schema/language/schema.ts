@@ -6,6 +6,7 @@ export const language = builder.objectRef<Language>('Language')
 language.implement({
   fields: (t) => ({
     languageId: t.exposeInt('language_id'),
+    name: t.exposeString('name'),
     //----- Relationships -----//
 
     dateModified: t.field({

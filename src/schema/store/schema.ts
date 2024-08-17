@@ -6,11 +6,12 @@ export const store = builder.objectRef<Store>('Store')
 store.implement({
   fields: (t) => ({
     storeId: t.exposeInt('store_id'),
+    managerStaffId: t.exposeInt('manager_staff_id'),
+    addressId: t.exposeInt('address_id'),
 
     //----- Relationships -----//
-    // customer
-    // staff
-    // rental
+    // manager staff
+    // address
     dateModified: t.field({
       type: 'DateTime',
       resolve: (t) => t.last_update,
