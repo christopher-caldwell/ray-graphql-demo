@@ -1,0 +1,1 @@
+SELECT * FROM rental LIMIT $1 OFFSET $2;

@@ -1,0 +1,1 @@
+SELECT * FROM country LIMIT $1 OFFSET $2;

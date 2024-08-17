@@ -1,0 +1,1 @@
+SELECT * FROM customer LIMIT $1 OFFSET $2;

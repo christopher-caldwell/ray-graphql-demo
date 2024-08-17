@@ -4,6 +4,7 @@ import { createYoga } from 'graphql-yoga'
 
 import { schema } from './schema'
 import { PgPool } from './db'
+import { myPlugin } from './db/connectionManager'
 
 const yoga = createYoga({
   schema,
@@ -11,6 +12,7 @@ const yoga = createYoga({
     const dbClient = await PgPool.connect()
     return { dbClient }
   },
+  plugins: [myPlugin],
 })
 const yogaRouter = express.Router()
 yogaRouter.use(yoga)

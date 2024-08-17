@@ -1,0 +1,1 @@
+SELECT * FROM payment LIMIT $1 OFFSET $2;

@@ -1,0 +1,1 @@
+SELECT * FROM city LIMIT $1 OFFSET $2;
