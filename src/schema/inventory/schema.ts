@@ -22,7 +22,7 @@ inventory.implement({
     store: t.field({
       type: store,
       resolve(parentInventory) {
-        return StoreLoader.load(parentInventory.film_id)
+        return StoreLoader.load(parentInventory.store_id)
       },
     }),
     dateModified: t.field({
